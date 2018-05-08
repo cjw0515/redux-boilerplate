@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import Input from '../components/Input';
+import List from '../components/List';
 
 class TodoContainer extends Component { 
     render(){
         return(
             <div>
-                hi
+                <Input/>
+                <List/>
             </div>
         )
     }
