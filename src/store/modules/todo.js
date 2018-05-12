@@ -1,8 +1,8 @@
-import { createActions, handleActions } from 'redux-actions';
+import { createAction, handleActions } from 'redux-actions';
 
 const CHANGE_INPUT = 'todo/CHANGE_INPUT';
 //createActions를 통하여 만든 액션함수에 파라미터를 넣어서 호출하면 자동으로 payload라는 이름으로 통일되어 설정된다.
-export const changeInput = createActions(CHANGE_INPUT, (value) => value);
+export const changeInput = createAction(CHANGE_INPUT, (value) => value);
 
 const initialState = {
     input: ''

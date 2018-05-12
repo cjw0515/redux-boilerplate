@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import Input from '../components/Input';
 import List from '../components/List';
 import { connect } from 'react-redux';
-import *  as TodoActions from '../store/modules/todo';
+import *  as todoActions from '../store/modules/todo';
 
 class TodoContainer extends Component { 
 
-    handleChange = () => {
-        this.props.changeInput();
+    handleChange = (e) => {
+        const { TodoActions } = this.props;
+        TodoActions.changeInput(e.target.value);
     }
 
     render(){
@@ -31,7 +32,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    changeInput: () => dispatch(TodoActions.changeInput)
+    changeInput: () => dispatch(todoActions.changeInput)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoContainer);
