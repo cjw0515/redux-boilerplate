@@ -1,16 +1,37 @@
 import React, { Component } from 'react';
 import Input from '../components/Input';
 import List from '../components/List';
+import { connect } from 'react-redux';
+import *  as TodoActions from '../store/modules/todo';
 
 class TodoContainer extends Component { 
+
+    handleChange = () => {
+        this.props.changeInput();
+    }
+
     render(){
+        const { handleChange } = this;
+        const { input } = this.props;
+
         return(
             <div>
-                <Input/>
+                <Input
+                    onChange={handleChange}
+                    input={input}
+                />
                 <List/>
             </div>
         )
     }
 }
 
-export default TodoContainer;
+const mapStateToProps = (state) => ({
+    input: state.todo.input
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    changeInput: () => dispatch(TodoActions.changeInput)
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoContainer);
